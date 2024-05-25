@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:audioplayers/audioplayers.dart';
 
-void main() {
-  runApp(const MyApp());
-}
+void main() => runApp(const MyApp());
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -13,14 +11,14 @@ class MyApp extends StatelessWidget {
     await player.play(AssetSource('note$numS.wav'));
   }
 
-  buildKey() {
+  Expanded buildKey({required Color keyColor, required int keyNum}) {
     return Expanded(
       child: TextButton(
         style: TextButton.styleFrom(
-          backgroundColor: Colors.blue,
+          backgroundColor: keyColor,
         ),
         onPressed: () {
-          playSound(numS: 1, numS2: 2);
+          playSound(numS: keyNum);
         },
         child: Container(),
       ),
@@ -35,13 +33,13 @@ class MyApp extends StatelessWidget {
         body: SafeArea(
           child: Column(
             children: [
-              buildKey(),
-              buildKey(),
-              buildKey(),
-              buildKey(),
-              buildKey(),
-              buildKey(),
-              buildKey(),
+              buildKey(keyColor: Colors.red, keyNum: 1),
+              buildKey(keyColor: Colors.blue, keyNum: 2),
+              buildKey(keyColor: Colors.green, keyNum: 3),
+              buildKey(keyColor: Colors.orange, keyNum: 4),
+              buildKey(keyColor: Colors.yellow, keyNum: 5),
+              buildKey(keyColor: Colors.purple, keyNum: 6),
+              buildKey(keyColor: Colors.amber, keyNum: 7),
             ],
           ),
         ),
